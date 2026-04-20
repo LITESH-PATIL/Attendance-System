@@ -6,4 +6,12 @@ export class TeacherService{
     async createClass(data){
         return await this.repo.createClass(data);
     }
+
+    async getStudentById(id){
+        return await this.repo.getStudentById(id);
+    }
+
+    async findClass( classId,teacherId ){
+        return await this.repo.findClass(classId,teacherId);
+    }
 }
