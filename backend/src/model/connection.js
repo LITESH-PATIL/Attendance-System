@@ -8,7 +8,7 @@ export const connectDb = async()=>{
             throw new Error("Invalid URL")
         }
         
-        mongoose.connect(process.env.DATABASE_URI);
+        await mongoose.connect(process.env.DATABASE_URI);
     }
     catch(err) {
         throw err;
