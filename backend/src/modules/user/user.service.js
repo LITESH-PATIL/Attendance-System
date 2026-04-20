@@ -11,7 +11,11 @@ export class UserService {
     async getUserByEmail(email) {
         return await this.repo.getUserByEmail(email);
     }
-    async sign(data){
-        return await this.repo.jwtSign(data);
+    async sign({payload, secret, options}){
+        return await this.repo.jwtSign(payload, secret, options);
+    }
+
+    async getUserById(id){
+        return await this.repo.getUserById(id);
     }
 }

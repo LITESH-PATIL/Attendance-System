@@ -15,4 +15,8 @@ export class UserRepository {
     async jwtSign(payload, secret, option) {
         return await jwt.sign(payload, secret, option);
     }
+
+    async getUserById(id){
+        return await User.findById(id);
+    }
 }

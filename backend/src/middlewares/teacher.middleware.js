@@ -2,7 +2,7 @@ import express from "express";
 import jwt from "jsonwebtoken";
 import "dotenv/config"
 
-export async function authMiddleware(req, res, next) {
+export async function teacherMiddleware(req, res, next) {
     try {
 
         const authHeader = req.headers.authorization;
@@ -35,6 +35,14 @@ export async function authMiddleware(req, res, next) {
         }
 
         req.user = verified;
+
+        if (verified.role !== 'teacher') {
+            return res.status(403).json({
+                success: false,
+                error: "Access denied: Teacher role required"
+            });
+        }
+
         next();
     } catch (error) {
         next(error);
