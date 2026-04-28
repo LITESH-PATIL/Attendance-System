@@ -14,7 +14,9 @@ export class UserController {
             const validation = isValidUserCreationInput.safeParse(req.body);
 
             if (!validation.success) {
+                console.log(validation.error.format());
                 return res.status(400).json({
+                     
                     "success": false,
                     "error": "Invalid request schema",
                 });
